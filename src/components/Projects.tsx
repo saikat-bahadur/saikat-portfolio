@@ -17,10 +17,10 @@ const Projects = () => {
         "Developed comprehensive API documentation and testing suite using Postman, achieving 95% endpoint coverage with automated testing integration"
       ],
       github: "https://github.com/saikat-bahadur/Job-Portal",
-      demo: "https://saikat-bahadur.com/job-portal"
+      demo: "https://github.com/saikat-bahadur/Job-Portall"
     },
     {
-      title: "GenBot - AI Chatbot Android Application",
+      title: "GemBot - AI Chatbot Android Application",
       duration: "Feb 2024 – June 2024",
       description: "Native Android AI chatbot application serving 500+ active users with 95% crash-free session rate using modern Android development practices.",
       technologies: ["Kotlin", "Jetpack Compose", "MVVM Architecture"],
@@ -30,7 +30,7 @@ const Projects = () => {
         "Designed robust error handling and logging system using Android best practices, reducing app crashes by 80%"
       ],
       github: "https://github.com/saikat-bahadur/GemBot",
-      demo: "https://github.com/saikat-bahadur/GemBot"
+      demo:  "https://github.com/saikat-bahadur/GemBot"
     },
     {
       title: "NexusNews - News Web Application",
