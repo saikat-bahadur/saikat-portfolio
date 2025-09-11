@@ -16,20 +16,20 @@ const Education = () => {
       institution: "Delhi Public School",
       degree: "Higher Secondary Education",
       location: "Angul, Odisha",
-      duration: "July 2021",
+      duration: "July 2022",
       cgpa: "Percentage: 89.6%",
       stream: "Science | CBSE",
       description: "Completed senior secondary education with distinction in Science stream, building strong foundation in Mathematics and Computer Science."
     },
-    {
-      institution: "Maharishi Vidya Mandir",
-      degree: "Secondary Education",
-      location: "Angul, Odisha", 
-      duration: "May 2019",
-      cgpa: "Percentage: 90.4%",
-      stream: "CBSE",
-      description: "Achieved academic excellence in secondary education with consistent high performance across all subjects."
-    }
+    // {
+    //   institution: "Maharishi Vidya Mandir",
+    //   degree: "Secondary Education",
+    //   location: "Angul, Odisha", 
+    //   duration: "May 2019",
+    //   cgpa: "Percentage: 90.4%",
+    //   stream: "CBSE",
+    //   description: "Achieved academic excellence in secondary education with consistent high performance across all subjects."
+    // }
   ];
 
   return (
