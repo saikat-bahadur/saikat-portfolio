@@ -17,7 +17,7 @@ const Projects = () => {
         "Developed comprehensive API documentation and testing suite using Postman, achieving 95% endpoint coverage with automated testing integration"
       ],
       github: "https://github.com/saikat-bahadur/Job-Portal",
-      demo: "https://github.com/saikat-bahadur/Job-Portall"
+      demo: "https://github.com/saikat-bahadur/Job-Portal"
     },
     {
       title: "GemBot - AI Chatbot Android Application",
