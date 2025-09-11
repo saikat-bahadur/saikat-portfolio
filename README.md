@@ -1,70 +1,113 @@
 # Saikat Bahadur Portfolio
 
-## Project info
+This is the personal portfolio website of Saikat Bahadur, a Computer Science Engineering student specializing in full-stack development, cloud technologies, and scalable system design. The website showcases Saikat's skills, projects, education, and contact information.
 
-**Description**: Portfolio website of Saikat Bahadur - Computer Science Engineering student specializing in full-stack development, cloud technologies, and scalable system design.
+## Features
 
-## How can I edit this code?
+- Responsive and modern design using Tailwind CSS
+- Built with React and TypeScript
+- Client-side routing with React Router
+- Data fetching and state management with React Query
+- UI components powered by Radix UI and custom components
+- Sections include Hero, About, Skills, Projects, Education, Contact, and Footer
+- Smooth scrolling and interactive UI elements
 
-**Use your preferred IDE**
+## Technologies Used
 
-If you want to work locally using your own IDE, you can clone this repo and push changes.
+- React 18
+- TypeScript
+- Vite (build tool)
+- Tailwind CSS
+- Radix UI components
+- React Router DOM
+- React Query
+- Lucide React icons
+- Sonner for notifications
+- Various utility libraries (clsx, date-fns, zod, etc.)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Getting Started
 
-Follow these steps:
+### Prerequisites
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- Node.js (v16 or higher recommended)
+- npm or yarn package manager
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Installation
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. Clone the repository:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+   ```bash
+   git clone https://github.com/saikat-bahadur/saikat-portfolio.git
+   cd saikat-portfolio
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+### Running the Development Server
+
+Start the development server with:
+
+```bash
 npm run dev
+# or
+yarn dev
 ```
 
-**Edit a file directly in GitHub**
+Open your browser and navigate to `http://localhost:5173` (or the port shown in the terminal) to view the website.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Building for Production
 
-**Use GitHub Codespaces**
+To build the project for production, run:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+npm run build
+# or
+yarn build
+```
 
-## What technologies are used for this project?
+The optimized output will be in the `dist` folder.
 
-This project is built with:
+### Preview Production Build
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+To preview the production build locally:
 
-## How can I deploy this project?
+```bash
+npm run preview
+# or
+yarn preview
+```
 
-You can deploy this project using various platforms such as Vercel, Netlify, or GitHub Pages.
+## Project Structure
 
-## Can I connect a custom domain?
+```
+.
+├── public/                 # Static assets
+├── src/
+│   ├── components/         # Reusable UI components
+│   ├── hooks/              # Custom React hooks
+│   ├── lib/                # Utility functions
+│   ├── pages/              # Page components (Index, NotFound)
+│   ├── App.tsx             # Main app component with routing
+│   └── main.tsx            # Entry point
+├── index.html              # HTML template
+├── package.json            # Project metadata and dependencies
+├── tailwind.config.ts      # Tailwind CSS configuration
+├── vite.config.ts          # Vite build configuration
+└── README.md               # This file
+```
 
-Yes, you can connect a custom domain depending on your deployment platform.
+## Contact
 
-For example, if deploying on Vercel:
-- Go to your project settings
-- Navigate to Domains
-- Add your custom domain
+- Email: saikatbahadur918@gmail.com
+- GitHub: [https://github.com/saikat-bahadur](https://github.com/saikat-bahadur)
+- LinkedIn: [https://www.linkedin.com/in/saikatbahadur](https://www.linkedin.com/in/saikatbahadur)
 
-For Netlify:
-- Go to Site settings > Domain management
-- Add custom domain
+---
+
+Thank you for visiting my portfolio website!
