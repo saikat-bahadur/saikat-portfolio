@@ -36,7 +36,7 @@ const Contact = () => {
     },
     {
       name: "GitHub",
-      url: "https://github.com/saikatbahadur",
+      url: "https://github.com/saikat-bahadur",
       icon: <Github className="w-6 h-6" />
     }
   ];
