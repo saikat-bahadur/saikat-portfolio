@@ -6,6 +6,7 @@ import Projects from '@/components/Projects';
 import Education from '@/components/Education';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import AnimatedSection from '@/components/AnimatedSection';
 
 const Index = () => {
   return (
@@ -22,11 +23,21 @@ const Index = () => {
       <Header />
       <main className="relative z-10">
         <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Education />
-        <Contact />
+        <AnimatedSection animationType="slideInFromLeft">
+          <About />
+        </AnimatedSection>
+        <AnimatedSection animationType="slideInFromRight">
+          <Skills />
+        </AnimatedSection>
+        <AnimatedSection animationType="zoomIn">
+          <Projects />
+        </AnimatedSection>
+        <AnimatedSection animationType="slideInFromLeft">
+          <Education />
+        </AnimatedSection>
+        <AnimatedSection animationType="fadeIn">
+          <Contact />
+        </AnimatedSection>
       </main>
       <Footer />
     </div>
