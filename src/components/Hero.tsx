@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Github, Mail, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
+import { useState } from 'react';
 
 // Animation variants
 const container = {
@@ -39,6 +41,9 @@ const Hero = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const [nameKey, setNameKey] = useState(0);
+  const [titleKey, setTitleKey] = useState(0);
 
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -121,22 +126,14 @@ const Hero = () => {
               >
                 Hi, I'm
               </motion.span>
-              <motion.span 
+              <TypeAnimation
+                key={nameKey}
+                sequence={["Saikat Bahadur", 2000, () => setNameKey((k) => k + 1)]}
+                wrapper="span"
+                speed={50}
+                cursor={false}
                 className="gradient-text block"
-                animate={{
-                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: 'linear',
-                }}
-                style={{
-                  backgroundSize: '200% auto',
-                }}
-              >
-                Saikat Bahadur
-              </motion.span>
+              />
             </motion.h1>
           </motion.div>
 
@@ -163,12 +160,14 @@ const Hero = () => {
                 Computer Science Engineering Student
               </motion.span>
               <br />
-              <motion.span 
+              <TypeAnimation
+                key={titleKey}
+                sequence={["& Aspiring Full Stack Developer", 2000, () => setTitleKey((k) => k + 1)]}
+                wrapper="span"
+                speed={50}
+                cursor={false}
                 className="text-3xl md:text-4xl font-bold"
-                whileHover={{ scale: 1.05 }}
-              >
-                & Aspiring Full Stack Developer
-              </motion.span>
+              />
             </motion.div>
           </motion.div>
 
