@@ -35,7 +35,7 @@ const Header = () => {
     // Create a temporary link element to trigger download
     const link = document.createElement('a');
     link.href = '/resume/saikat_resume(2).pdf'; // Path to your resume file
-    link.download = 'Saikat_Bahadur_Resume.pdf';
+    link.download = 'Saikat_Bahadur_resume.pdf';
     link.target = '_blank';
     document.body.appendChild(link);
     link.click();
