@@ -3,11 +3,13 @@ import { Button } from '@/components/ui/button';
 import { Menu, X, ExternalLink, Download, Eye, X as CloseIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,7 +29,12 @@ const Header = () => {
   };
 
   const handleResumeView = () => {
-    setIsResumeModalOpen(true);
+    if (isMobile) {
+      // On mobile, open the PDF in a new tab instead of modal
+      window.open('/resume/saikat_resume(2).pdf', '_blank');
+    } else {
+      setIsResumeModalOpen(true);
+    }
     setIsMobileMenuOpen(false); // Close mobile menu if open
   };
 
