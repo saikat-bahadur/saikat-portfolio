@@ -1,6 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Code, Settings, Cloud, Lightbulb } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const About = () => {
   const highlights = [
@@ -31,13 +32,25 @@ const About = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16 fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              About <span className="text-gradient">Me</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              I'm a passionate Computer Science Engineering student with a drive for innovation and excellence in technology.
-            </p>
+          <div className="text-center mb-20 fade-in-up">
+            <motion.h2 
+              className="text-5xl md:text-6xl font-black mb-6 tracking-tight"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              About <span className="gradient-text">Me</span>
+            </motion.h2>
+            <motion.p 
+              className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              I'm a passionate Computer Science Engineering student with a drive for{' '}
+              <span className="font-semibold text-purple-600">innovation</span> and{' '}
+              <span className="font-semibold text-blue-600">excellence</span> in technology.
+            </motion.p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -80,39 +93,75 @@ const About = () => {
             </div>
 
             {/* Highlights Grid */}
-            <div className="fade-in-right">
+            <motion.div 
+              className="fade-in-right"
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {highlights.map((highlight, index) => (
-                  <Card key={index} className="project-card border-0 shadow-sm bg-gradient-to-br from-primary/10 to-accent/10">
-                    <CardContent className="p-6">
-                      <div className="text-primary mb-4">
-                        {highlight.icon}
-                      </div>
-                      <h4 className="font-semibold mb-2">{highlight.title}</h4>
-                      <p className="text-sm text-muted-foreground">
-                        {highlight.description}
-                      </p>
-                    </CardContent>
-                  </Card>
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -5, scale: 1.02 }}
+                  >
+                    <Card className="modern-card border-0 shadow-lg group">
+                      <CardContent className="p-6">
+                        <motion.div 
+                          className="text-purple-600 mb-4 group-hover:scale-110 transition-transform"
+                          whileHover={{ rotate: 360 }}
+                          transition={{ duration: 0.6 }}
+                        >
+                          {highlight.icon}
+                        </motion.div>
+                        <h4 className="font-bold text-lg mb-3 group-hover:text-purple-600 transition-colors">
+                          {highlight.title}
+                        </h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors">
+                          {highlight.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Goals & Aspirations */}
-          <div className="mt-16 text-center bg-gradient-to-r from-primary/10 to-accent/10 p-8 rounded-lg fade-in-up">
-            <Card className="border-0 bg-gradient-to-r from-primary/10 to-accent/10 p-8 shadow-lg">
-              <CardContent className="p-0">
-                <h3 className="text-2xl font-bold mb-4">My Goals & Aspirations</h3>
-                <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed ">
-                  I aspire to become a leading Software Engineer specializing in cloud technologies 
-                  and scalable system design. My goal is to contribute to innovative projects that 
-                  make a meaningful impact on society while continuously learning and growing in 
-                  the ever-evolving tech landscape.
-                </p>
+          <motion.div 
+            className="mt-20"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <Card className="modern-card border-0 shadow-xl overflow-hidden">
+              <CardContent className="p-12 text-center">
+                <motion.div
+                  initial={{ scale: 0.9 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <h3 className="text-3xl md:text-4xl font-black mb-6">
+                    My <span className="gradient-text">Goals</span> & Aspirations
+                  </h3>
+                  <p className="text-lg md:text-xl text-muted-foreground max-w-5xl mx-auto leading-relaxed">
+                    I aspire to become a leading{' '}
+                    <span className="font-semibold text-purple-600">Software Engineer</span> specializing in{' '}
+                    <span className="font-semibold text-blue-600">cloud technologies</span> and scalable system design. 
+                    My goal is to contribute to innovative projects that make a meaningful impact on society while 
+                    continuously learning and growing in the ever-evolving tech landscape.
+                  </p>
+                </motion.div>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,5 +1,36 @@
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Github, Mail, MapPin } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+// Animation variants
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
+
+const gradientVariants = {
+  initial: {
+    backgroundPosition: '0% 50%',
+  },
+  animate: {
+    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+    transition: {
+      duration: 15,
+      repeat: Infinity,
+      ease: 'linear' as const
+    }
+  }
+};
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
@@ -11,96 +42,292 @@ const Hero = () => {
 
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5"></div>
+      {/* Modern animated gradient background */}
+      <motion.div 
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(-45deg, #8b5cf6, #3b82f6, #06b6d4, #10b981, #f59e0b, #ec4899)',
+          backgroundSize: '400% 400%',
+        }}
+        variants={gradientVariants}
+        initial="initial"
+        animate="animate"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-white/80 to-white/70 backdrop-blur-sm"></div>
+      </motion.div>
+
+      {/* Additional floating geometric shapes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          className="absolute w-64 h-64 rounded-full bg-gradient-to-r from-purple-400/20 to-blue-400/20 top-20 -left-32"
+          animate={{
+            y: [0, -30, 0],
+            x: [0, 20, 0],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div 
+          className="absolute w-48 h-48 rounded-full bg-gradient-to-r from-cyan-400/20 to-emerald-400/20 bottom-20 -right-24"
+          animate={{
+            y: [0, 30, 0],
+            x: [0, -20, 0],
+            rotate: [360, 180, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div 
+          className="absolute w-32 h-32 rounded-full bg-gradient-to-r from-orange-400/20 to-pink-400/20 top-1/2 right-1/4"
+          animate={{
+            y: [0, -20, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
       
       {/* Content */}
       <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <motion.div 
+          className="max-w-4xl mx-auto text-center"
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
           {/* Main heading */}
-          <div className="fade-in-up">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Hi, I'm{' '}
-              <span className="text-gradient">
+          <motion.div variants={item}>
+            <motion.h1 
+              className="text-6xl md:text-8xl font-black mb-6 leading-tight tracking-tight"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+            >
+              <motion.span 
+                className="block text-4xl md:text-5xl font-light mb-2 text-muted-foreground"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                Hi, I'm
+              </motion.span>
+              <motion.span 
+                className="gradient-text block"
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+                style={{
+                  backgroundSize: '200% auto',
+                }}
+              >
                 Saikat Bahadur
-              </span>
-            </h1>
-          </div>
+              </motion.span>
+            </motion.h1>
+          </motion.div>
 
           {/* Subtitle */}
-          <div className="fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-              Computer Science Engineering Student & Aspiring{' '}
-              <span className="text-primary font-semibold">Full Stack Developer</span>
-            </p>
-          </div>
+          <motion.div variants={item}>
+            <motion.div 
+              className="text-2xl md:text-3xl font-semibold mb-4 max-w-4xl mx-auto leading-relaxed"
+              whileHover={{ scale: 1.01 }}
+            >
+              <motion.span 
+                className="gradient-text"
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+                style={{
+                  backgroundSize: '200% auto',
+                }}
+              >
+                Computer Science Engineering Student
+              </motion.span>
+              <br />
+              <motion.span 
+                className="text-3xl md:text-4xl font-bold"
+                whileHover={{ scale: 1.05 }}
+              >
+                & Aspiring Full Stack Developer
+              </motion.span>
+            </motion.div>
+          </motion.div>
 
           {/* Description */}
-          <div className="fade-in-up" style={{ animationDelay: '0.4s' }}>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Passionate about building scalable web applications and cloud solutions. 
-              Currently pursuing B.Tech in Computer Science Engineering at GIET University.
-            </p>
-          </div>
+          <motion.div variants={item}>
+            <motion.p 
+              className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed"
+              whileHover={{ scale: 1.01 }}
+            >
+              Passionate about building{' '}
+              <motion.span 
+                className="font-semibold text-primary"
+                whileHover={{ scale: 1.05 }}
+              >
+                scalable web applications
+              </motion.span>
+              {' '}and{' '}
+              <motion.span 
+                className="font-semibold text-accent"
+                whileHover={{ scale: 1.05 }}
+              >
+                cloud solutions
+              </motion.span>
+              . Currently pursuing B.Tech in Computer Science Engineering at GIET University.
+            </motion.p>
+          </motion.div>
 
           {/* Location */}
-          <div className="fade-in-up flex items-center justify-center gap-2 mb-8" style={{ animationDelay: '0.5s' }}>
-            <MapPin className="w-5 h-5 text-muted-foreground" />
+          <motion.div 
+            className="flex items-center justify-center gap-2 mb-8"
+            variants={item}
+            whileHover={{ scale: 1.05 }}
+          >
+            <motion.div whileHover={{ rotate: 360, transition: { duration: 1 } }}>
+              <MapPin className="w-5 h-5 text-muted-foreground" />
+            </motion.div>
             <span className="text-muted-foreground">Angul, Odisha, India</span>
-          </div>
+          </motion.div>
 
           {/* CTA Buttons */}
-          <div className="fade-in-up flex flex-col sm:flex-row gap-4 justify-center mb-12" style={{ animationDelay: '0.6s' }}>
-            <Button 
-              size="lg" 
-              onClick={() => scrollToSection('projects')}
-              className="bg-gradient-hero hover:opacity-90 text-white border-0 px-8"
-            >
-              View My Work
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              onClick={() => window.open('mailto:saikatbahadur918@gmail.com', '_blank')}
-              className="px-8"
-            >
-              <Mail className="w-5 h-5 mr-2" />
-              Get In Touch
-            </Button>
-          </div>
+          <motion.div 
+            className="flex flex-wrap justify-center gap-6 mb-12"
+            variants={item}
+          >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button 
+                size="lg" 
+                onClick={() => scrollToSection('contact')}
+                className="relative overflow-hidden group px-8 py-4 text-lg font-semibold bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+              >
+                <motion.span 
+                  className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 group-hover:from-white/30 group-hover:to-white/20 transition-all duration-300"
+                  initial={{ scale: 0 }}
+                  whileHover={{ scale: 1 }}
+                />
+                <Mail className="w-5 h-5 mr-3" />
+                Contact Me
+              </Button>
+            </motion.div>
+            
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                onClick={() => scrollToSection('projects')}
+                className="relative overflow-hidden group px-8 py-4 text-lg font-semibold border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
+              >
+                <motion.span 
+                  className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 group-hover:from-purple-700 group-hover:to-blue-700 transition-all duration-300"
+                  initial={{ scale: 0 }}
+                  whileHover={{ scale: 1 }}
+                />
+                <span className="relative z-10 flex items-center">
+                  View My Work
+                  <ArrowDown className="w-5 h-5 ml-3" />
+                </span>
+              </Button>
+            </motion.div>
+          </motion.div>
 
           {/* Social Links */}
-          <div className="fade-in-up flex justify-center gap-6 mb-12" style={{ animationDelay: '0.8s' }}>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => window.open('https://github.com/saikat-bahadur', '_blank')}
-              className="hover:text-primary"
+          <motion.div 
+            className="flex justify-center space-x-7"
+            variants={item}
+          >
+            <motion.a
+              href="https://github.com/saikat-bahadur"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors relative p-2 cursor-pointer"
+              aria-label="GitHub"
+              whileHover={{ y: -3, color: 'hsl(var(--foreground))' }}
+              whileTap={{ scale: 0.9 }}
             >
               <Github className="w-6 h-6" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => window.open('https://www.linkedin.com/in/saikatbahadur', '_blank')}
-              className="hover:text-primary"
+            </motion.a>
+            
+            {/* Add more social links with similar animation */}
+            <motion.a
+              href="https://www.linkedin.com/in/saikatbahadur"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors relative p-2 cursor-pointer"
+              aria-label="LinkedIn"
+              whileHover={{ y: -3, color: 'hsl(var(--foreground))' }}
+              whileTap={{ scale: 0.9 }}
             >
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect width="4" height="12" x="2" y="9"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
               </svg>
-            </Button>
-          </div>
-
-          {/* Scroll indicator */}
-          <div className="fade-in-up" style={{ animationDelay: '1s' }}>
-            <button
-              onClick={() => scrollToSection('about')}
-              className="animate-bounce text-muted-foreground hover:text-primary transition-colors"
+            </motion.a>
+            
+            {/* <motion.a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors relative p-2"
+              aria-label="Twitter"
+              whileHover={{ y: -3, color: 'hsl(var(--foreground))' }}
+              whileTap={{ scale: 0.9 }}
             >
-              <ArrowDown className="w-6 h-6 mx-auto" />
-            </button>
-          </div>
-        </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+              </svg>
+            </motion.a> */}
+          </motion.div>
+
+          {/* Animated Scroll indicator */}
+          <motion.div 
+            className="absolute bottom-3 left-1/2 -translate-x-1/2 cursor-pointer"
+            onClick={() => scrollToSection('about')}
+            initial={{ y: 0 }}
+            animate={{ y: [0, 10, 0] }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity, 
+              ease: 'easeInOut' 
+            }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <div className="w-8 h-12 border-2 border-muted-foreground/30 rounded-full flex justify-center p-1 overflow-hidden">
+              <motion.div 
+                className="w-1 h-2 bg-muted-foreground/70 rounded-full"
+                animate={{ 
+                  y: [0, 24, 0],
+                  opacity: [0.2, 1, 0.2]
+                }}
+                transition={{ 
+                  duration: 2, 
+                  repeat: Infinity, 
+                  ease: 'easeInOut' 
+                }}
+              />
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
